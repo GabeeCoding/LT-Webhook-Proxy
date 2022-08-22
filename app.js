@@ -13,7 +13,10 @@ if(url === undefined){
 
 app.post("/", (req,resp) => {
     //proxy
-    resp.send(axios({method: "POST", url: url, data: JSON.stringify(req.body)}))
+    let response = axios({method: "POST", url: url, data: JSON.stringify(req.body)})
+    response.then(r => console.log(r))
+    response.catch(err => console.log(err))
+    resp.send(response.data)
 });
 
 let port = process.env.PORT || 3000
