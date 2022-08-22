@@ -13,13 +13,6 @@ if(url === undefined){
 
 app.post("/", (req,resp) => {
     //proxy
-    fetch(url, {
-        method: 'POST', 
-        body: JSON.stringify(req.body),
-        headers: {
-            "Content-Type": "application/json"
-        }
-    });
     axios({method: "POST", url: url, data: JSON.stringify(req.body)})
     resp.send("Ho");
 });
