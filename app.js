@@ -13,12 +13,11 @@ if(url === undefined){
 
 app.post("/", (req,resp) => {
     //proxy
-    console.log("w")
-    let response = axios({method: "POST", url: url, data: JSON.stringify(req.body)})
+    console.log(JSON.stringify(req.body), req.body)
+    let response = axios({method: "POST", url: url, data: JSON.stringify(req.body), headers: {"Content-Type": "application/json"}})
     response.then(r => console.log(r))
     response.catch(err => console.log(err))
     console.log("Sending data")
-    console.log(response, response.data)
     resp.send(response.data)
 });
 
