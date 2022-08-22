@@ -1,5 +1,5 @@
 const express = require("express") 
-const fetch = require("node-fetch")
+const axios = require("axios")
 require("dotenv").config()
 
 const app = express();
@@ -20,6 +20,7 @@ app.post("/", (req,resp) => {
             "Content-Type": "application/json"
         }
     });
+    axios({method: "POST", url: url, data: JSON.stringify(req.body)})
     resp.send("Ho");
 });
 
